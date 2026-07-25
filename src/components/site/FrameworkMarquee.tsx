@@ -12,7 +12,7 @@ export default function FrameworkMarquee() {
       <div className="marquee-track items-center">
         {items.map((f, i) => (
           <span key={`${f}-${i}`} className="flex items-center">
-            <span className="px-7 text-[15px] whitespace-nowrap text-fog-400 transition-colors duration-500 hover:text-fog-100 sm:px-9 sm:text-[17px]">
+            <span className="px-7 text-[15px] whitespace-nowrap text-muted transition-colors duration-500 hover:text-ink sm:px-9 sm:text-[17px]">
               {f}
             </span>
             <span className="h-1 w-1 shrink-0 rounded-full bg-white/15" />

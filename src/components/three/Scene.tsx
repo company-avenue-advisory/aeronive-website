@@ -56,9 +56,11 @@ export default function Scene({ variant = "hero", active = true }: Props) {
       style={{ pointerEvents: "none" }}
     >
       <Suspense fallback={null}>
+        {/* Green sits perceptually brighter than the indigo this was tuned
+            for, so the rift runs cooler to keep the headline readable. */}
         <AuroraRift
-          intensity={isHero ? 1.05 : 0.5}
-          beam={isHero ? 1 : 0.5}
+          intensity={isHero ? 0.78 : 0.4}
+          beam={isHero ? 0.72 : 0.4}
           arcs={isHero ? 1 : 1.15}
           scale={isHero ? [34, 20] : [44, 22]}
           position={[0, isHero ? 0.2 : 0.6, -7]}

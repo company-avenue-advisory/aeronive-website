@@ -1,14 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/site/Nav";
 import Footer from "@/components/site/Footer";
 import SmoothScroll from "@/components/site/SmoothScroll";
 import { site } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -50,9 +57,33 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#04050a",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#04050a" },
+    { media: "(prefers-color-scheme: light)", color: "#fdfcf9" },
+  ],
 };
+
+/**
+ * Resolves the theme before first paint, so the page never flashes the wrong
+ * skin. Runs blocking in <head> — it must stay small and dependency-free.
+ * `theme-ready` is deferred a frame so the initial paint is not transitioned.
+ */
+const themeScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("aeronive-theme");
+    var theme = stored === "light" || stored === "dark"
+      ? stored
+      : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    document.documentElement.dataset.theme = theme;
+  } catch (e) {
+    document.documentElement.dataset.theme = "dark";
+  }
+  requestAnimationFrame(function () {
+    document.documentElement.classList.add("theme-ready");
+  });
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -62,9 +93,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme="dark"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="bg-ink-950 flex min-h-full flex-col">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-canvas flex min-h-full flex-col">
         <SmoothScroll>
           <Nav />
           <main className="flex-1">{children}</main>

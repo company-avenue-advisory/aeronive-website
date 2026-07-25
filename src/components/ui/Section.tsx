@@ -18,7 +18,7 @@ export function Container({
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <span className="eyebrow">
-      <span className="h-1.5 w-1.5 rounded-full bg-aqua-400 pulse-dot" />
+      <span className="h-1.5 w-1.5 rounded-full bg-brand pulse-dot" />
       {children}
     </span>
   );
@@ -58,7 +58,7 @@ export function SectionHeading({
       {lead && (
         <Reveal delay={0.12}>
           <p
-            className={`mt-5 max-w-2xl text-[15px] leading-relaxed text-fog-300 ${
+            className={`mt-5 max-w-2xl text-[15px] leading-relaxed text-body ${
               isCentre ? "mx-auto" : ""
             }`}
           >

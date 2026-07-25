@@ -26,7 +26,7 @@ export default function CTA({
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse 45% 90% at 50% 110%, rgba(77,124,255,0.35), transparent 65%)",
+                  "radial-gradient(ellipse 45% 90% at 50% 110%, var(--c-glow), transparent 65%)",
               }}
             />
             <div className="grid-backdrop pointer-events-none absolute inset-0 opacity-60" />
@@ -35,7 +35,7 @@ export default function CTA({
               <h2 className="mx-auto max-w-[18ch] text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.05] font-medium text-gradient">
                 {title}
               </h2>
-              <p className="mx-auto mt-6 max-w-[54ch] text-[15px] leading-relaxed text-fog-300">
+              <p className="mx-auto mt-6 max-w-[54ch] text-[15px] leading-relaxed text-body">
                 {lead}
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

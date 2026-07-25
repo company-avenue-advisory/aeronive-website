@@ -18,7 +18,7 @@ export default function PageHero({
     <section className="relative isolate overflow-hidden pb-16">
       <SceneMount variant="ambient" className="absolute inset-0 -z-10 h-[80vh]" />
       <div className="grid-backdrop pointer-events-none absolute inset-0 -z-10 h-[80vh]" />
-      <div className="pointer-events-none absolute inset-x-0 top-[52vh] -z-10 h-[30vh] bg-gradient-to-b from-transparent to-ink-950" />
+      <div className="pointer-events-none absolute inset-x-0 top-[52vh] -z-10 h-[30vh] bg-gradient-to-b from-transparent to-canvas" />
 
       <Container>
         <div className="flex flex-col items-center pt-[160px] text-center sm:pt-[188px]">
@@ -33,7 +33,7 @@ export default function PageHero({
           </Reveal>
 
           <Reveal delay={0.16}>
-            <p className="mt-7 max-w-[60ch] text-[15px] leading-relaxed text-fog-300 sm:text-[16px]">
+            <p className="mt-7 max-w-[60ch] text-[15px] leading-relaxed text-body sm:text-[16px]">
               {lead}
             </p>
           </Reveal>

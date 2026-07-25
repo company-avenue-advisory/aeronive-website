@@ -81,26 +81,26 @@ export default function SectorsPage() {
               <Reveal key={s.slug}>
                 <article
                   id={s.slug}
-                  className="scroll-mt-28 border-t border-white/[0.07] py-12 first:border-t-0 first:pt-0 lg:py-16"
+                  className="scroll-mt-28 border-t border-line py-12 first:border-t-0 first:pt-0 lg:py-16"
                 >
                   <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
                     <div>
                       <div className="flex items-baseline gap-4">
-                        <span className="font-mono text-[11px] tracking-[0.14em] text-fog-600">
+                        <span className="font-mono text-[11px] tracking-[0.14em] text-ghost">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <h2 className="text-[clamp(1.5rem,2.8vw,2.1rem)] leading-[1.1] font-medium text-gradient">
                           {s.name}
                         </h2>
                       </div>
-                      <p className="mt-5 max-w-[52ch] text-[14px] leading-[1.75] text-fog-300">
+                      <p className="mt-5 max-w-[52ch] text-[14px] leading-[1.75] text-body">
                         {s.summary}
                       </p>
                       <ul className="mt-7 flex flex-wrap gap-2">
                         {s.regimes.map((r) => (
                           <li
                             key={r}
-                            className="rounded-lg border border-white/[0.09] bg-white/[0.03] px-2.5 py-1.5 font-mono text-[10px] tracking-[0.05em] text-fog-400"
+                            className="rounded-lg border border-line-strong bg-veil px-2.5 py-1.5 font-mono text-[10px] tracking-[0.05em] text-muted"
                           >
                             {r}
                           </li>
@@ -113,8 +113,8 @@ export default function SectorsPage() {
                       <ul className="mt-5 flex flex-col gap-4">
                         {s.useCases.map((u) => (
                           <li key={u} className="flex items-start gap-3">
-                            <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-beam-400" />
-                            <span className="text-[13.5px] leading-relaxed text-fog-300">
+                            <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-brand" />
+                            <span className="text-[13.5px] leading-relaxed text-body">
                               {u}
                             </span>
                           </li>
@@ -143,15 +143,15 @@ export default function SectorsPage() {
               <Reveal key={f.name} delay={Math.min(i, 3) * 0.07}>
                 <article className="card card-hover flex h-full flex-col p-6">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[16px] font-medium tracking-[-0.02em] text-fog-50">
+                    <h3 className="text-[16px] font-medium tracking-[-0.02em] text-ink">
                       {f.name}
                     </h3>
-                    <Trail className="h-4 w-4 shrink-0 text-fog-600" />
+                    <Trail className="h-4 w-4 shrink-0 text-ghost" />
                   </div>
-                  <span className="mt-2 font-mono text-[10px] tracking-[0.06em] text-beam-400">
+                  <span className="mt-2 font-mono text-[10px] tracking-[0.06em] text-brand">
                     {f.scope}
                   </span>
-                  <p className="mt-4 text-[13px] leading-relaxed text-fog-400">
+                  <p className="mt-4 text-[13px] leading-relaxed text-muted">
                     {f.body}
                   </p>
                 </article>
@@ -160,11 +160,11 @@ export default function SectorsPage() {
           </div>
 
           <Reveal delay={0.1}>
-            <p className="mt-10 text-center text-[12.5px] text-fog-600">
+            <p className="mt-10 text-center text-[12.5px] text-ghost">
               Operating under a regime not listed here?{" "}
               <a
                 href="/contact"
-                className="text-fog-300 underline decoration-white/20 underline-offset-4 transition-colors hover:text-beam-300"
+                className="text-body underline decoration-white/20 underline-offset-4 transition-colors hover:text-brand-text"
               >
                 Tell us which one
               </a>
@@ -182,7 +182,7 @@ export default function SectorsPage() {
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse 60% 70% at 15% 0%, rgba(77,124,255,0.16), transparent 65%)",
+                  "radial-gradient(ellipse 60% 70% at 15% 0%, var(--c-glow-soft), transparent 65%)",
               }}
             />
             <div className="relative grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
@@ -191,7 +191,7 @@ export default function SectorsPage() {
                 <h2 className="mt-5 text-[clamp(1.7rem,3vw,2.3rem)] leading-[1.1] font-medium text-gradient">
                   Defensible under scrutiny, not just compliant on paper.
                 </h2>
-                <p className="mt-5 text-[13.5px] leading-relaxed text-fog-400">
+                <p className="mt-5 text-[13.5px] leading-relaxed text-muted">
                   The difference between a system that passes review and one that
                   survives an incident is whether it can explain itself
                   afterwards.
@@ -203,12 +203,12 @@ export default function SectorsPage() {
                   <Reveal key={a.title} delay={i * 0.07}>
                     <div>
                       <div className="flex items-center gap-2.5">
-                        <Check className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
-                        <h3 className="text-[14.5px] font-medium text-fog-100">
+                        <Check className="h-3.5 w-3.5 shrink-0 text-ok" />
+                        <h3 className="text-[14.5px] font-medium text-ink">
                           {a.title}
                         </h3>
                       </div>
-                      <p className="mt-2.5 pl-[26px] text-[12.5px] leading-relaxed text-fog-500">
+                      <p className="mt-2.5 pl-[26px] text-[12.5px] leading-relaxed text-faint">
                         {a.body}
                       </p>
                     </div>
@@ -230,11 +230,11 @@ export default function SectorsPage() {
             >
               <div>
                 <span className="label-mono">Next</span>
-                <h3 className="mt-2 text-[18px] font-medium tracking-[-0.02em] text-fog-50">
+                <h3 className="mt-2 text-[18px] font-medium tracking-[-0.02em] text-ink">
                   How the system is actually built
                 </h3>
               </div>
-              <ArrowRight className="h-5 w-5 shrink-0 text-fog-500 transition-all duration-400 group-hover:translate-x-1 group-hover:text-beam-400" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-faint transition-all duration-400 group-hover:translate-x-1 group-hover:text-brand" />
             </a>
           </Reveal>
         </Container>

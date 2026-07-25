@@ -61,6 +61,44 @@ export function useWebGL(): boolean {
 
 /* ------------------------------------------------------------------ */
 
+export type Theme = "dark" | "light";
+
+const THEME_KEY = "aeronive-theme";
+
+/**
+ * The active theme lives on `document.documentElement.dataset.theme`, written
+ * by the blocking script in the document head before first paint. React reads
+ * it rather than owning it — that is what keeps the no-flash guarantee.
+ */
+const themeListeners = new Set<() => void>();
+
+function subscribeTheme(onChange: () => void) {
+  themeListeners.add(onChange);
+  return () => {
+    themeListeners.delete(onChange);
+  };
+}
+
+const readTheme = (): Theme =>
+  document.documentElement.dataset.theme === "light" ? "light" : "dark";
+
+export function setTheme(next: Theme) {
+  document.documentElement.dataset.theme = next;
+  try {
+    localStorage.setItem(THEME_KEY, next);
+  } catch {
+    // private mode — the choice just will not survive a reload
+  }
+  themeListeners.forEach((listener) => listener());
+}
+
+/** Current theme. Renders as "dark" on the server, settles on hydration. */
+export function useTheme(): Theme {
+  return useSyncExternalStore(subscribeTheme, readTheme, () => "dark" as const);
+}
+
+/* ------------------------------------------------------------------ */
+
 /** Window scrollY past `threshold`, without a setState-in-effect. */
 export function useScrolledPast(threshold: number): boolean {
   const subscribe = useCallback((onChange: () => void) => {

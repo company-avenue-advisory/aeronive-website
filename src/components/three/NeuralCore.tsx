@@ -88,8 +88,8 @@ const edgeFrag = /* glsl */ `
     float carrying = step(0.45, fract(vSeed * 7.31 + floor(uTime * 0.16 + vSeed)));
     pulse *= carrying;
 
-    vec3 dim  = vec3(0.30, 0.42, 0.78);
-    vec3 hot  = vec3(0.62, 0.90, 1.00);
+    vec3 dim  = vec3(0.06, 0.52, 0.35);
+    vec3 hot  = vec3(0.55, 0.98, 0.80);
     vec3 col = mix(dim, hot, pulse);
 
     float alpha = (0.12 + pulse * 0.78) * uOpacity;
@@ -131,7 +131,7 @@ const nodeFrag = /* glsl */ `
     float halo = smoothstep(0.5, 0.0, d) * 0.35;
     float alpha = (pow(core, 2.0) + halo) * vGlow;
 
-    vec3 col = mix(vec3(0.55, 0.70, 1.0), vec3(0.85, 0.97, 1.0), core);
+    vec3 col = mix(vec3(0.13, 0.68, 0.45), vec3(0.72, 1.0, 0.88), core);
     gl_FragColor = vec4(col * alpha, alpha);
   }
 `;
@@ -167,7 +167,7 @@ const coreFrag = /* glsl */ `
     // Kept low: the core sits directly behind the headline
     float a = (centre * 0.26 + rim * 0.20) * breathe;
 
-    vec3 col = mix(vec3(0.35, 0.55, 1.0), vec3(0.80, 0.95, 1.0), centre);
+    vec3 col = mix(vec3(0.07, 0.58, 0.38), vec3(0.78, 1.0, 0.90), centre);
     gl_FragColor = vec4(col * a, a);
   }
 `;
@@ -312,7 +312,7 @@ export default function NeuralCore({
       <mesh ref={ringA} rotation={[Math.PI / 2.6, 0, 0]}>
         <torusGeometry args={[radius * 1.02, 0.004, 6, 180]} />
         <meshBasicMaterial
-          color="#7aa2ff"
+          color="#35d89a"
           transparent
           opacity={0.32}
           blending={THREE.AdditiveBlending}
@@ -322,7 +322,7 @@ export default function NeuralCore({
       <mesh ref={ringB} rotation={[Math.PI / 1.7, Math.PI / 5, 0]}>
         <torusGeometry args={[radius * 1.16, 0.003, 6, 180]} />
         <meshBasicMaterial
-          color="#5fe3f0"
+          color="#e2a62b"
           transparent
           opacity={0.2}
           blending={THREE.AdditiveBlending}

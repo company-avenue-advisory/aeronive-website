@@ -49,10 +49,10 @@ const fragmentShader = /* glsl */ `
     float core = smoothstep(0.5, 0.0, d);
     float alpha = pow(core, 2.4) * vTwinkle;
 
-    // A minority of stars run cool-blue, the rest near-white
+    // A minority of stars run brand green, the rest near-white
     vec3 white = vec3(0.92, 0.95, 1.0);
-    vec3 blue  = vec3(0.48, 0.64, 1.0);
-    vec3 col = mix(white, blue, step(0.72, vSeed));
+    vec3 tint  = vec3(0.21, 0.85, 0.60);
+    vec3 col = mix(white, tint, step(0.72, vSeed));
 
     gl_FragColor = vec4(col * alpha, alpha);
   }

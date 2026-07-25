@@ -141,7 +141,7 @@ export default function SolutionsPage() {
                     {body.map((p) => (
                       <p
                         key={p.slice(0, 24)}
-                        className="mt-5 text-[14px] leading-[1.75] text-fog-300"
+                        className="mt-5 text-[14px] leading-[1.75] text-body"
                       >
                         {p}
                       </p>
@@ -149,8 +149,8 @@ export default function SolutionsPage() {
                     <ul className="mt-8 flex flex-col gap-3">
                       {points.map((pt) => (
                         <li key={pt} className="flex items-start gap-3">
-                          <Check className="mt-[3px] h-3.5 w-3.5 shrink-0 text-beam-400" />
-                          <span className="text-[13.5px] leading-relaxed text-fog-400">
+                          <Check className="mt-[3px] h-3.5 w-3.5 shrink-0 text-brand" />
+                          <span className="text-[13.5px] leading-relaxed text-muted">
                             {pt}
                           </span>
                         </li>
@@ -165,7 +165,7 @@ export default function SolutionsPage() {
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(77,124,255,0.16), transparent 70%)",
+                          "radial-gradient(ellipse 70% 60% at 50% 100%, var(--c-glow-soft), transparent 70%)",
                       }}
                     />
                     {/* min-height rather than fixed: the diagrams differ in
@@ -197,28 +197,28 @@ export default function SolutionsPage() {
                 <Reveal key={t.name} delay={i * 0.09}>
                   <article className="card card-hover flex h-full flex-col p-7">
                     <div className="flex items-center justify-between">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-beam-400/20 bg-beam-500/10">
-                        <Icon className="h-5 w-5 text-beam-300" />
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-brand/20 bg-brand/10">
+                        <Icon className="h-5 w-5 text-brand-text" />
                       </span>
-                      <span className="font-mono text-[10px] tracking-[0.1em] text-fog-600 uppercase">
+                      <span className="font-mono text-[10px] tracking-[0.1em] text-ghost uppercase">
                         {t.posture}
                       </span>
                     </div>
 
-                    <h3 className="mt-7 text-[19px] font-medium tracking-[-0.02em] text-fog-50">
+                    <h3 className="mt-7 text-[19px] font-medium tracking-[-0.02em] text-ink">
                       {t.name}
                     </h3>
-                    <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-fog-400">
+                    <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-muted">
                       {t.body}
                     </p>
 
-                    <ul className="mt-7 flex flex-col gap-2 border-t border-white/[0.07] pt-5">
+                    <ul className="mt-7 flex flex-col gap-2 border-t border-line pt-5">
                       {t.traits.map((trait) => (
                         <li
                           key={trait}
-                          className="flex items-center gap-2.5 font-mono text-[11px] text-fog-500"
+                          className="flex items-center gap-2.5 font-mono text-[11px] text-faint"
                         >
-                          <span className="h-1 w-1 rounded-full bg-beam-400" />
+                          <span className="h-1 w-1 rounded-full bg-brand" />
                           {trait}
                         </li>
                       ))}
@@ -243,9 +243,9 @@ export default function SolutionsPage() {
                 lead="Connectors run inside your network and authenticate as a service principal you control. Nothing is copied to infrastructure we operate."
               />
               <Reveal delay={0.16}>
-                <div className="mt-8 flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4">
-                  <Lock className="mt-0.5 h-4 w-4 shrink-0 text-beam-400" />
-                  <p className="text-[12.5px] leading-relaxed text-fog-400">
+                <div className="mt-8 flex items-start gap-3 rounded-xl border border-line bg-veil p-4">
+                  <Lock className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+                  <p className="text-[12.5px] leading-relaxed text-muted">
                     Where a source system has no suitable API, we build the
                     connector as part of the engagement and hand over the source.
                   </p>
@@ -254,14 +254,14 @@ export default function SolutionsPage() {
             </div>
 
             <Reveal delay={0.1}>
-              <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.06] sm:grid-cols-3 lg:mt-4">
+              <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-veil-strong sm:grid-cols-3 lg:mt-4">
                 {integrations.map((name) => (
                   <li
                     key={name}
-                    className="flex items-center gap-2.5 bg-ink-950/90 px-4 py-4 transition-colors duration-400 hover:bg-ink-900"
+                    className="flex items-center gap-2.5 bg-canvas/90 px-4 py-4 transition-colors duration-400 hover:bg-raised"
                   >
-                    <span className="h-1 w-1 shrink-0 rounded-full bg-beam-500" />
-                    <span className="truncate text-[12.5px] text-fog-300">
+                    <span className="h-1 w-1 shrink-0 rounded-full bg-brand" />
+                    <span className="truncate text-[12.5px] text-body">
                       {name}
                     </span>
                   </li>
@@ -279,10 +279,10 @@ export default function SolutionsPage() {
             <div className="card grid items-center gap-8 p-7 lg:grid-cols-[1fr_320px] sm:p-9">
               <div>
                 <span className="label-mono">Continuous assurance</span>
-                <h3 className="mt-4 text-[20px] font-medium tracking-[-0.02em] text-fog-50">
+                <h3 className="mt-4 text-[20px] font-medium tracking-[-0.02em] text-ink">
                   Evidence accumulates while the system runs.
                 </h3>
-                <p className="mt-3 max-w-[60ch] text-[13.5px] leading-relaxed text-fog-400">
+                <p className="mt-3 max-w-[60ch] text-[13.5px] leading-relaxed text-muted">
                   Drift against your evaluation set is monitored continuously.
                   When a regression trips a threshold, the affected release is
                   flagged and routed for re-evaluation before it reaches users.

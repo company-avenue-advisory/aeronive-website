@@ -12,59 +12,9 @@ const base = {
 };
 
 /* ------------------------------------------------------------------ */
-/* Brand mark — a governed lattice inside a sealed boundary            */
-/* ------------------------------------------------------------------ */
-
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      className={className}
-      fill="none"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient id="aeronive-mark" x1="4" y1="2" x2="28" y2="30">
-          <stop offset="0%" stopColor="#a3bcff" />
-          <stop offset="55%" stopColor="#4d7cff" />
-          <stop offset="100%" stopColor="#22c7dd" />
-        </linearGradient>
-      </defs>
-      {/* Sealed hexagonal boundary */}
-      <path
-        d="M16 2.6 27.4 9.3v13.4L16 29.4 4.6 22.7V9.3Z"
-        stroke="url(#aeronive-mark)"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      {/* Internal lattice */}
-      <path
-        d="M16 9.4 21.6 19.6H10.4Z"
-        stroke="url(#aeronive-mark)"
-        strokeWidth="1.3"
-        strokeLinejoin="round"
-        opacity="0.85"
-      />
-      <circle cx="16" cy="9.4" r="1.9" fill="#a3bcff" />
-      <circle cx="21.6" cy="19.6" r="1.5" fill="#4d7cff" />
-      <circle cx="10.4" cy="19.6" r="1.5" fill="#22c7dd" />
-    </svg>
-  );
-}
-
-export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <Logo className="h-7 w-7" />
-      <span className="text-[15px] font-medium tracking-[-0.02em] text-fog-50">
-        Aeronive<span className="text-fog-400"> Labs</span>
-      </span>
-    </span>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /* UI icons                                                            */
+/*                                                                     */
+/* The brand mark and lockup live in ./Brand.                          */
 /* ------------------------------------------------------------------ */
 
 export const ArrowRight = (p: IconProps) => (
@@ -176,6 +126,19 @@ export const Search = (p: IconProps) => (
   <svg {...base} {...p}>
     <circle cx="11" cy="11" r="6.5" />
     <path d="m16 16 4 4" />
+  </svg>
+);
+
+export const Sun = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="4.2" />
+    <path d="M12 3.2v1.9M12 18.9v1.9M20.8 12h-1.9M5.1 12H3.2M18.2 5.8l-1.35 1.35M7.15 16.85 5.8 18.2M18.2 18.2l-1.35-1.35M7.15 7.15 5.8 5.8" />
+  </svg>
+);
+
+export const Moon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
   </svg>
 );
 

@@ -43,7 +43,7 @@ export default function Home() {
       <section className="py-14">
         <Container>
           <Reveal>
-            <p className="text-center font-mono text-[11px] tracking-[0.16em] text-fog-600 uppercase">
+            <p className="text-center font-mono text-[11px] tracking-[0.16em] text-ghost uppercase">
               Built against the regimes that bind you
             </p>
           </Reveal>
@@ -87,13 +87,13 @@ export default function Home() {
                     }`}
                   >
                     <div className={isFullWidth ? "lg:max-w-[46%]" : ""}>
-                      <h3 className="text-[19px] font-medium tracking-[-0.02em] text-fog-50">
+                      <h3 className="text-[19px] font-medium tracking-[-0.02em] text-ink">
                         {cap.title}
                       </h3>
-                      <p className="mt-3 text-[13.5px] leading-relaxed text-fog-300">
+                      <p className="mt-3 text-[13.5px] leading-relaxed text-body">
                         {cap.blurb}
                       </p>
-                      <p className="mt-3 text-[13px] leading-relaxed text-fog-500">
+                      <p className="mt-3 text-[13px] leading-relaxed text-faint">
                         {cap.detail}
                       </p>
                     </div>
@@ -128,12 +128,12 @@ export default function Home() {
                       {m.value}
                     </span>
                     {m.unit && (
-                      <span className="font-mono text-[13px] text-beam-400">
+                      <span className="font-mono text-[13px] text-brand">
                         {m.unit}
                       </span>
                     )}
                   </div>
-                  <p className="mx-auto mt-4 max-w-[26ch] text-[12.5px] leading-relaxed text-fog-400">
+                  <p className="mx-auto mt-4 max-w-[26ch] text-[12.5px] leading-relaxed text-muted">
                     {m.label}
                   </p>
                 </div>
@@ -181,19 +181,19 @@ export default function Home() {
                   className="card card-hover group flex h-full flex-col p-6"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-[16.5px] font-medium tracking-[-0.02em] text-fog-50">
+                    <h3 className="text-[16.5px] font-medium tracking-[-0.02em] text-ink">
                       {s.name}
                     </h3>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-fog-600 transition-all duration-400 group-hover:translate-x-0.5 group-hover:text-beam-400" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ghost transition-all duration-400 group-hover:translate-x-0.5 group-hover:text-brand" />
                   </div>
-                  <p className="mt-3 flex-1 text-[13px] leading-relaxed text-fog-400">
+                  <p className="mt-3 flex-1 text-[13px] leading-relaxed text-muted">
                     {s.summary}
                   </p>
                   <ul className="mt-5 flex flex-wrap gap-1.5">
                     {s.regimes.map((r) => (
                       <li
                         key={r}
-                        className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-1 font-mono text-[9.5px] tracking-[0.04em] text-fog-500"
+                        className="rounded-md border border-line-strong bg-veil px-2 py-1 font-mono text-[9.5px] tracking-[0.04em] text-faint"
                       >
                         {r}
                       </li>
@@ -217,24 +217,24 @@ export default function Home() {
 
           <div className="relative mt-16">
             {/* Connecting rail */}
-            <div className="pointer-events-none absolute top-[26px] right-0 left-0 hidden h-px bg-gradient-to-r from-transparent via-white/12 to-transparent lg:block" />
+            <div className="pointer-events-none absolute top-[26px] right-0 left-0 hidden h-px bg-gradient-to-r from-transparent via-line-strong to-transparent lg:block" />
 
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
               {process.map((p, i) => (
                 <Reveal key={p.step} delay={i * 0.09}>
                   <div className="relative">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-white/[0.09] bg-ink-900 font-mono text-[13px] text-beam-300">
+                      <span className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-line-strong bg-raised font-mono text-[13px] text-brand-text">
                         {p.step}
                       </span>
-                      <h3 className="text-[17px] font-medium tracking-[-0.02em] text-fog-50 lg:hidden">
+                      <h3 className="text-[17px] font-medium tracking-[-0.02em] text-ink lg:hidden">
                         {p.title}
                       </h3>
                     </div>
-                    <h3 className="mt-6 hidden text-[17px] font-medium tracking-[-0.02em] text-fog-50 lg:block">
+                    <h3 className="mt-6 hidden text-[17px] font-medium tracking-[-0.02em] text-ink lg:block">
                       {p.title}
                     </h3>
-                    <p className="mt-3 text-[13px] leading-relaxed text-fog-400">
+                    <p className="mt-3 text-[13px] leading-relaxed text-muted">
                       {p.body}
                     </p>
                   </div>

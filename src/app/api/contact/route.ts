@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
+import { CONTACT_COLLECTION, getDb } from "@/lib/mongodb";
 
 /**
  * Contact submissions.
  *
- * Delivery is intentionally pluggable: set CONTACT_WEBHOOK_URL to any endpoint
- * that accepts a JSON POST (Slack, Zapier, a CRM intake, your own handler) and
- * submissions forward there. Until that is configured the route reports
- * `unconfigured` so the UI can fall back to a direct mailto rather than
- * pretending the message was delivered.
+ * Two independent sinks, both optional:
+ *  - MONGODB_URI       persists the submission to Atlas (the system of record)
+ *  - CONTACT_WEBHOOK_URL forwards it to Slack, Zapier, a CRM intake, anything
+ *                      that accepts a JSON POST
+ *
+ * A submission counts as delivered if *either* sink accepted it, so a webhook
+ * outage cannot lose a lead that is already stored. With neither configured
+ * the route reports `unconfigured` and the UI falls back to a direct mailto
+ * rather than pretending the message was delivered.
  */
 
 export const runtime = "nodejs";
@@ -66,11 +71,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, errors }, { status: 422 });
   }
 
+  const dbPromise = getDb();
   const webhook = process.env.CONTACT_WEBHOOK_URL;
 
-  if (!webhook) {
+  if (!dbPromise && !webhook) {
     console.warn(
-      "[contact] CONTACT_WEBHOOK_URL is not set — submission was not delivered.",
+      "[contact] neither MONGODB_URI nor CONTACT_WEBHOOK_URL is set — " +
+        "submission was not delivered.",
       { email: data.email, organization: data.organization },
     );
     return NextResponse.json(
@@ -79,20 +86,44 @@ export async function POST(request: Request) {
     );
   }
 
-  try {
-    const res = await fetch(webhook, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        source: "aeronivelabs.com/contact",
-        receivedAt: new Date().toISOString(),
-        ...data,
-      }),
-    });
+  const submission = {
+    ...data,
+    source: "aeronivelabs.com/contact",
+    createdAt: new Date(),
+    userAgent: request.headers.get("user-agent")?.slice(0, 300) ?? null,
+  };
 
-    if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
-  } catch (err) {
-    console.error("[contact] delivery failed", err);
+  let stored = false;
+  if (dbPromise) {
+    try {
+      const db = await dbPromise;
+      await db.collection(CONTACT_COLLECTION).insertOne({ ...submission });
+      stored = true;
+    } catch (err) {
+      console.error("[contact] could not write to MongoDB", err);
+    }
+  }
+
+  let forwarded = false;
+  if (webhook) {
+    try {
+      const res = await fetch(webhook, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          ...submission,
+          createdAt: submission.createdAt.toISOString(),
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
+      forwarded = true;
+    } catch (err) {
+      console.error("[contact] webhook delivery failed", err);
+    }
+  }
+
+  if (!stored && !forwarded) {
     return NextResponse.json(
       { ok: false, error: "delivery_failed" },
       { status: 502 },

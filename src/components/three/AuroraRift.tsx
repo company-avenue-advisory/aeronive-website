@@ -93,9 +93,9 @@ const frag = /* glsl */ `
     /* ---- composite ---------------------------------------------- */
     float energy = halo * uBeam + arcs * uArcs * 0.55;
 
-    vec3 deep = vec3(0.18, 0.32, 0.85);  // #2e52d9-ish
-    vec3 mid  = vec3(0.48, 0.64, 1.00);  // beam-400
-    vec3 hot  = vec3(0.75, 0.95, 1.00);  // near-white cyan
+    vec3 deep = vec3(0.04, 0.46, 0.30);  // brand green, deep
+    vec3 mid  = vec3(0.21, 0.85, 0.60);  // brand green
+    vec3 hot  = vec3(0.82, 1.00, 0.93);  // near-white mint
 
     vec3 col = mix(deep, mid, clamp(energy * 1.6, 0.0, 1.0));
     col = mix(col, hot, clamp(core * 1.3, 0.0, 1.0));

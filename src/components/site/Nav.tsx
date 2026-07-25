@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/site";
 import { useScrolledPast } from "@/lib/client-env";
-import { ArrowRight, Wordmark } from "@/components/ui/Icons";
+import { ArrowRight } from "@/components/ui/Icons";
+import { Wordmark } from "@/components/ui/Brand";
+import ThemeToggle from "@/components/site/ThemeToggle";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -28,7 +30,7 @@ export default function Nav() {
       <div
         className={`transition-all duration-500 ${
           scrolled
-            ? "border-b border-white/[0.07] bg-ink-950/70 backdrop-blur-xl"
+            ? "border-b border-line bg-canvas/70 backdrop-blur-xl"
             : "border-b border-transparent"
         }`}
       >
@@ -38,7 +40,7 @@ export default function Nav() {
             className="transition-opacity duration-300 hover:opacity-80"
             aria-label="Aeronive Labs — home"
           >
-            <Wordmark />
+            <Wordmark className="h-10 w-auto" title="Aeronive Labs — home" />
           </Link>
 
           {/* Centre pill nav */}
@@ -50,8 +52,8 @@ export default function Nav() {
                     href={item.href}
                     className={`relative block rounded-full px-4 py-1.5 text-[13px] transition-colors duration-300 ${
                       isActive(item.href)
-                        ? "bg-white/[0.08] text-fog-50"
-                        : "text-fog-400 hover:text-fog-100"
+                        ? "bg-veil-strong text-ink"
+                        : "text-muted hover:text-ink"
                     }`}
                   >
                     {item.label}
@@ -62,6 +64,8 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
+
             <Link
               href="/contact"
               className="btn btn-primary hidden h-10 px-5 text-[13px] sm:inline-flex"
@@ -79,12 +83,12 @@ export default function Nav() {
             >
               <span className="relative block h-3 w-4">
                 <span
-                  className={`absolute left-0 block h-px w-4 bg-fog-100 transition-all duration-300 ${
+                  className={`absolute left-0 block h-px w-4 bg-ink transition-all duration-300 ${
                     open ? "top-1.5 rotate-45" : "top-0"
                   }`}
                 />
                 <span
-                  className={`absolute left-0 block h-px w-4 bg-fog-100 transition-all duration-300 ${
+                  className={`absolute left-0 block h-px w-4 bg-ink transition-all duration-300 ${
                     open ? "top-1.5 -rotate-45" : "top-3"
                   }`}
                 />
@@ -96,7 +100,7 @@ export default function Nav() {
 
       {/* Mobile sheet */}
       <div
-        className={`fixed inset-x-0 top-[68px] bottom-0 z-40 origin-top border-t border-white/[0.07] bg-ink-950/95 backdrop-blur-2xl transition-all duration-400 md:hidden ${
+        className={`fixed inset-x-0 top-[68px] bottom-0 z-40 origin-top border-t border-line bg-canvas/95 backdrop-blur-2xl transition-all duration-400 md:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"
@@ -105,12 +109,12 @@ export default function Nav() {
         <nav className="px-6 pt-6">
           <ul className="flex flex-col">
             {[{ label: "Home", href: "/" }, ...nav].map((item, i) => (
-              <li key={item.href} className="border-b border-white/[0.06]">
+              <li key={item.href} className="border-b border-line">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={`flex items-center justify-between py-5 text-2xl tracking-[-0.02em] ${
-                    isActive(item.href) ? "text-fog-50" : "text-fog-400"
+                    isActive(item.href) ? "text-ink" : "text-muted"
                   }`}
                 >
                   {item.label}

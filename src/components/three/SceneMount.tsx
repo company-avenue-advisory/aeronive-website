@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import { usePrefersReducedMotion, useWebGL } from "@/lib/client-env";
+import { usePrefersReducedMotion, useTheme, useWebGL } from "@/lib/client-env";
 import type { SceneVariant } from "./Scene";
 
 /** WebGL is client-only, and the three bundle should never block first paint. */
@@ -17,8 +17,10 @@ type Props = {
  * Owns the decision of whether the 3D scene runs at all:
  *  - skipped entirely when the user prefers reduced motion
  *  - skipped when the device reports no WebGL
+ *  - skipped on the light theme: every layer of the scene is additively
+ *    blended emitted light, which is invisible over a near-white page. The
+ *    CSS backdrop below carries the hero on its own there.
  *  - paused when scrolled out of view
- * A CSS gradient fallback stands in so the layout never looks unfinished.
  */
 export default function SceneMount({ variant = "hero", className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,7 +28,8 @@ export default function SceneMount({ variant = "hero", className }: Props) {
 
   const reducedMotion = usePrefersReducedMotion();
   const hasWebGL = useWebGL();
-  const enabled = hasWebGL && !reducedMotion;
+  const theme = useTheme();
+  const enabled = hasWebGL && !reducedMotion && theme === "dark";
 
   useEffect(() => {
     if (!enabled || !ref.current) return;
@@ -47,8 +50,8 @@ export default function SceneMount({ variant = "hero", className }: Props) {
         style={{
           background:
             variant === "hero"
-              ? "radial-gradient(ellipse 42% 55% at 50% 42%, rgba(77,124,255,0.20), transparent 70%), radial-gradient(ellipse 80% 40% at 50% 6%, rgba(47,91,240,0.14), transparent 75%)"
-              : "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(77,124,255,0.16), transparent 72%)",
+              ? "radial-gradient(ellipse 42% 55% at 50% 42%, var(--c-glow), transparent 70%), radial-gradient(ellipse 80% 40% at 50% 6%, var(--c-glow-soft), transparent 75%)"
+              : "radial-gradient(ellipse 70% 60% at 50% 0%, var(--c-glow-soft), transparent 72%)",
         }}
       />
       {enabled && (

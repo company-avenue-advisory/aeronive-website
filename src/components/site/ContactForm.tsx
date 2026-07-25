@@ -14,7 +14,7 @@ const deployments = [
 ];
 
 const fieldClass =
-  "w-full rounded-xl border border-white/[0.09] bg-white/[0.03] px-4 py-3 text-[14px] text-fog-100 placeholder:text-fog-600 outline-none transition-all duration-300 focus:border-beam-400/50 focus:bg-white/[0.05] focus:ring-2 focus:ring-beam-500/15";
+  "w-full rounded-xl border border-line-strong bg-veil px-4 py-3 text-[14px] text-ink placeholder:text-ghost outline-none transition-all duration-300 focus:border-brand/50 focus:bg-veil-strong focus:ring-2 focus:ring-brand/15";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -62,13 +62,13 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="card flex flex-col items-center px-8 py-16 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-emerald-400/25 bg-emerald-400/10">
-          <Check className="h-6 w-6 text-emerald-400" />
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-ok/25 bg-ok/10">
+          <Check className="h-6 w-6 text-ok" />
         </span>
-        <h3 className="mt-7 text-[22px] font-medium tracking-[-0.02em] text-fog-50">
+        <h3 className="mt-7 text-[22px] font-medium tracking-[-0.02em] text-ink">
           Request received.
         </h3>
-        <p className="mt-3 max-w-[42ch] text-[13.5px] leading-relaxed text-fog-400">
+        <p className="mt-3 max-w-[42ch] text-[13.5px] leading-relaxed text-muted">
           We read every briefing request ourselves. Expect a reply within two
           business days, usually with a few questions about your data estate
           before we schedule anything.
@@ -141,11 +141,11 @@ export default function ContactForm() {
               Select a sector
             </option>
             {sectors.map((s) => (
-              <option key={s.slug} value={s.name} className="bg-ink-900">
+              <option key={s.slug} value={s.name} className="bg-raised">
                 {s.name}
               </option>
             ))}
-            <option value="Other" className="bg-ink-900">
+            <option value="Other" className="bg-raised">
               Other
             </option>
           </select>
@@ -163,7 +163,7 @@ export default function ContactForm() {
                     defaultChecked={i === deployments.length - 1}
                     className="peer sr-only"
                   />
-                  <span className="block rounded-full border border-white/[0.09] bg-white/[0.03] px-4 py-2 text-[12.5px] text-fog-400 transition-all duration-300 peer-checked:border-beam-400/45 peer-checked:bg-beam-500/12 peer-checked:text-beam-200 hover:border-white/20">
+                  <span className="block rounded-full border border-line-strong bg-veil px-4 py-2 text-[12.5px] text-muted transition-all duration-300 peer-checked:border-brand/45 peer-checked:bg-brand/12 peer-checked:text-brand-text hover:border-line-strong">
                     {d}
                   </span>
                 </label>
@@ -186,8 +186,8 @@ export default function ContactForm() {
       </div>
 
       {(status === "unconfigured" || status === "error") && (
-        <div className="mt-6 rounded-xl border border-amber-400/25 bg-amber-400/[0.07] p-4">
-          <p className="text-[12.5px] leading-relaxed text-amber-100/90">
+        <div className="mt-6 rounded-xl border border-warn/25 bg-warn/[0.07] p-4">
+          <p className="text-[12.5px] leading-relaxed text-warn/90">
             {status === "unconfigured"
               ? "This form has no delivery endpoint configured yet, so nothing was sent."
               : "Something went wrong sending that."}{" "}
@@ -206,7 +206,7 @@ export default function ContactForm() {
       )}
 
       <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[38ch] text-[11.5px] leading-relaxed text-fog-600">
+        <p className="max-w-[38ch] text-[11.5px] leading-relaxed text-ghost">
           We do not request access to production data at this stage.
         </p>
         <button
