@@ -1,11 +1,23 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Section";
 import { Wordmark } from "@/components/ui/Brand";
-import { frameworks, sectors, site } from "@/lib/site";
+import { frameworks, products, site, socials } from "@/lib/site";
 
 const columns = [
   {
-    title: "Solutions",
+    title: "Products",
+    links: [
+      ...products.map((p) => ({
+        label: p.name,
+        href: `/products#${p.slug}`,
+      })),
+      { label: "All products", href: "/products" },
+      { label: "Sectors", href: "/sectors" },
+      { label: "Compliance posture", href: "/sectors#frameworks" },
+    ],
+  },
+  {
+    title: "Platform",
     links: [
       { label: "Company Brain", href: "/solutions#company-brain" },
       { label: "Local-first interconnect", href: "/solutions#local-first" },
@@ -14,18 +26,13 @@ const columns = [
     ],
   },
   {
-    title: "Sectors",
-    links: sectors.slice(0, 4).map((s) => ({
-      label: s.name,
-      href: `/sectors#${s.slug}`,
-    })),
-  },
-  {
     title: "Company",
     links: [
-      { label: "Contact", href: "/contact" },
-      { label: "Compliance posture", href: "/sectors#frameworks" },
+      { label: "About", href: "/about" },
+      { label: "Team", href: "/about#team" },
+      { label: "Research", href: "/research" },
       { label: "Engagement model", href: "/#process" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -49,8 +56,9 @@ export default function Footer() {
               <Wordmark className="h-11 w-auto" />
             </Link>
             <p className="mt-5 max-w-xs text-[13.5px] leading-relaxed text-muted">
-              Compliance-native AI systems for regulated sectors. Built to run
-              inside your perimeter and stand up to an audit.
+              Compliance-native AI systems for regulated work. Aeronive EXIM is
+              in production for import and export compliance; the platform
+              underneath it is what the next products are built from.
             </p>
             <a
               href={`mailto:${site.email}`}
@@ -58,6 +66,25 @@ export default function Footer() {
             >
               {site.email}
             </a>
+
+            {socials.some((s) => s.href) && (
+              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+                {socials
+                  .filter((s) => s.href)
+                  .map((s) => (
+                    <li key={s.label}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-[11.5px] tracking-[0.06em] text-ghost transition-colors hover:text-ink"
+                      >
+                        {s.label}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            )}
           </div>
 
           {columns.map((col) => (

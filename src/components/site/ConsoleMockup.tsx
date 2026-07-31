@@ -14,7 +14,9 @@ import { Logo } from "@/components/ui/Brand";
 
 /**
  * A representative Company Brain console. Static markup — this is a product
- * illustration, not a live interface.
+ * illustration, not a live interface, and the figures in it are illustrative
+ * rather than measured. That is stated on the page too: an unfounded number
+ * costs more in technical diligence than it wins in marketing.
  */
 
 const railIcons = [Network, Database, Policy, Layers, Gauge, Server, Shield];
@@ -140,7 +142,9 @@ export default function ConsoleMockup() {
             <div className="mt-3 rounded-xl border border-line bg-sunken/60 p-4">
               <div className="flex items-center justify-between">
                 <span className="label-mono">Eval · retrieval precision</span>
-                <span className="font-mono text-[11px] text-brand-text">97.2%</span>
+                <span className="font-mono text-[11px] text-ghost">
+                  sample run
+                </span>
               </div>
               <div className="mt-3 flex h-14 items-end gap-[5px]">
                 {evalBars.map((h, i) => (
@@ -207,6 +211,11 @@ export default function ConsoleMockup() {
           </div>
         </div>
       </div>
+
+      <p className="mt-4 text-center font-mono text-[10.5px] tracking-[0.06em] text-ghost">
+        Illustrative interface. Figures shown are representative, not measured
+        results.
+      </p>
     </div>
   );
 }

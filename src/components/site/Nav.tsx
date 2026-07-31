@@ -43,10 +43,11 @@ export default function Nav() {
             <Wordmark className="h-10 w-auto" title="Aeronive Labs — home" />
           </Link>
 
-          {/* Centre pill nav */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 md:block">
+          {/* Centre pill nav. Held back to lg: with five sections the pill is
+              wider than the gap between the wordmark and the CTA at md. */}
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
             <ul className="glass flex items-center gap-1 rounded-full p-1">
-              {[{ label: "Home", href: "/" }, ...nav].map((item) => (
+              {nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -79,7 +80,7 @@ export default function Nav() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="glass flex h-10 w-10 items-center justify-center rounded-full md:hidden"
+              className="glass flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
             >
               <span className="relative block h-3 w-4">
                 <span
@@ -100,7 +101,7 @@ export default function Nav() {
 
       {/* Mobile sheet */}
       <div
-        className={`fixed inset-x-0 top-[68px] bottom-0 z-40 origin-top border-t border-line bg-canvas/95 backdrop-blur-2xl transition-all duration-400 md:hidden ${
+        className={`fixed inset-x-0 top-[68px] bottom-0 z-40 origin-top overflow-y-auto border-t border-line bg-canvas/95 backdrop-blur-2xl transition-all duration-400 lg:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"

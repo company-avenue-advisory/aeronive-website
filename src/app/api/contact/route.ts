@@ -21,6 +21,8 @@ type Payload = {
   name?: unknown;
   email?: unknown;
   organization?: unknown;
+  /** Which product or engagement the enquiry is about. */
+  interest?: unknown;
   sector?: unknown;
   deployment?: unknown;
   message?: unknown;
@@ -56,6 +58,7 @@ export async function POST(request: Request) {
     name: asString(body.name, MAX.name),
     email: asString(body.email, MAX.email),
     organization: asString(body.organization, MAX.organization),
+    interest: asString(body.interest, 120),
     sector: asString(body.sector, 80),
     deployment: asString(body.deployment, 80),
     message: asString(body.message, MAX.message),

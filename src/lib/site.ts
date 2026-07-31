@@ -7,15 +7,17 @@ export const site = {
   name: "Aeronive Labs",
   tagline: "Compliance-native AI for frontier systems",
   description:
-    "Aeronive Labs builds compliance-native AI systems for regulated sectors — private Company Brains, local-first interconnects, and data-backed pipelines that run inside your perimeter.",
+    "Aeronive Labs builds compliance-native AI systems for regulated sectors. Our first product, Aeronive EXIM, is in production for import and export compliance; the platform underneath it — Company Brain, local-first interconnect, governed pipelines — is what the next ones are built from.",
   email: "contact@aeronivelabs.com",
   url: "https://aeronivelabs.com",
 };
 
 export const nav = [
-  { label: "Solutions", href: "/solutions" },
+  { label: "Products", href: "/products" },
+  { label: "Platform", href: "/solutions" },
   { label: "Sectors", href: "/sectors" },
-  { label: "Contact", href: "/contact" },
+  { label: "Research", href: "/research" },
+  { label: "About", href: "/about" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -47,6 +49,93 @@ export const chips = [
   { label: "Offline tolerant", icon: "signal" },
   { label: "Cited answers", icon: "quote" },
 ] as const;
+
+/* ------------------------------------------------------------------ */
+/* Where we actually are — the honest evidence layer                   */
+/*                                                                     */
+/* Nothing in this block may claim a number we have not measured. An   */
+/* unfounded stat costs more in diligence than an empty space does.    */
+/* ------------------------------------------------------------------ */
+
+export const traction = {
+  /**
+   * TODO(aeronive): set the real count of customs house agent / importer
+   * interviews. Left null deliberately — the copy reads correctly without a
+   * number, and a wrong number is worse than none.
+   */
+  interviewCount: null as number | null,
+  /** TODO(aeronive): the ports and ICDs those conversations actually covered. */
+  corridors: ["Nhava Sheva", "Mundra", "ICD Tughlakabad"],
+};
+
+export const evidence = [
+  {
+    label: "Field research",
+    body: traction.interviewCount
+      ? `${traction.interviewCount} recorded conversations with customs house agents, importers, and exporters moving cargo through ${traction.corridors.join(", ")}.`
+      : `Recorded conversations with customs house agents, importers, and exporters moving cargo through ${traction.corridors.join(", ")}. The product scope came out of those, not out of a market map.`,
+  },
+  {
+    label: "Working software",
+    body: "Aeronive EXIM is in production — a running system, not a prototype deck. The platform capabilities on this site are the parts it is assembled from.",
+  },
+  {
+    label: "What we have not done yet",
+    body: "No published benchmark results, no named reference customers. When we have measured numbers, they go in Research with the method attached.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Products — what we actually sell today, and what it sits on         */
+/*                                                                     */
+/* TODO(aeronive): the capability lists below must match what the      */
+/* shipped EXIM product actually does. Trim anything not yet true.     */
+/* ------------------------------------------------------------------ */
+
+export type Product = {
+  slug: string;
+  name: string;
+  status: "In production" | "In development";
+  category: string;
+  who: string;
+  summary: string;
+  body: string[];
+  points: string[];
+  regimes: string[];
+};
+
+export const products: Product[] = [
+  {
+    slug: "exim",
+    name: "Aeronive EXIM",
+    status: "In production",
+    category: "Trade & customs compliance",
+    who: "Customs house agents, importers, exporters, and freight forwarders",
+    summary:
+      "Compliance checks that run against the consignment before it reaches the assessing officer — classification, licensing, valuation, and document completeness, each flag traced to the rule behind it.",
+    body: [
+      "Import and export compliance fails in a small number of predictable places: a classification that does not survive scrutiny, a licence or authorisation that does not cover the item, a valuation the department reads differently, a document set that is one certificate short. The cost of finding out late is a query, a detention, demurrage, and occasionally a penalty.",
+      "The knowledge that prevents this sits with experienced people, in their heads, one consignment at a time. Aeronive EXIM makes that knowledge checkable. It reads the documents for a shipment, checks them against the applicable rules, and returns the specific problems with the specific provision each one comes from — so a filing decision can be argued, not just asserted.",
+    ],
+    points: [
+      "Classification review against the tariff, with the reasoning shown",
+      "Licence, authorisation, and restriction checks for the item and route",
+      "Document-set completeness checked against the actual consignment",
+      "Valuation and duty-exposure flags raised before filing, not after",
+      "Every flag cites the provision, notification, or circular behind it",
+    ],
+    regimes: ["Customs Act", "DGFT / FTP", "HS / ITC-HS", "GST on imports"],
+  },
+];
+
+/**
+ * What comes after EXIM. Deliberately unnamed — we do not list products that
+ * do not exist. TODO(aeronive): promote entries into `products` as they ship.
+ */
+export const roadmapNote = {
+  title: "EXIM is the first, not the only.",
+  body: "The governed core — retrieval with citations, policy compiled into runtime controls, evidence generated by the running system — was built to carry more than one product. Trade compliance is where it went to work first because that is where we did the field research. Further products are in development against the same core.",
+};
 
 /* ------------------------------------------------------------------ */
 /* Core capabilities — bento grid on the landing page                  */
@@ -118,7 +207,11 @@ export const capabilities: Capability[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* Metrics strip — replace with audited figures before launch          */
+/* Design commitments — properties the architecture guarantees.        */
+/*                                                                     */
+/* These are not benchmark results and must never be presented as      */
+/* such. Measured figures belong in Research, with the method beside   */
+/* them. Anything here has to be true by construction.                 */
 /* ------------------------------------------------------------------ */
 
 export const metrics = [
@@ -130,12 +223,12 @@ export const metrics = [
   {
     value: "100",
     unit: "%",
-    label: "Generated answers traceable to a cited source record.",
+    label: "Generated answers resolvable to a cited source record.",
   },
   {
-    value: "6",
-    unit: "wks",
-    label: "Typical path from data assessment to a production pilot.",
+    value: "1",
+    unit: "core",
+    label: "One governed platform underneath every product we ship.",
   },
   {
     value: "24/7",
@@ -143,6 +236,9 @@ export const metrics = [
     label: "Continuous evaluation and drift monitoring once live.",
   },
 ];
+
+export const metricsNote =
+  "Design commitments enforced by the architecture — not benchmark results. Measured figures are published in Research with the method attached.";
 
 /* ------------------------------------------------------------------ */
 /* Engagement process                                                  */
@@ -302,6 +398,92 @@ export const faqs = [
   },
   {
     q: "What does a first engagement look like?",
-    a: "A scoped assessment covering the data estate and regulatory surface, followed by a production pilot on one high-value use case. Most clients reach a working pilot inside six weeks.",
+    a: "A scoped assessment covering the data estate and regulatory surface, followed by a production pilot on one high-value use case. The mapping phase sets the timeline; we would rather scope it against your estate than quote you an average.",
   },
+  {
+    q: "Is Aeronive EXIM a separate product or part of the platform?",
+    a: "Both. EXIM is a product you can buy today for import and export compliance. It is built on the same governed core — grounded retrieval, compiled policy, generated evidence — that we deploy for platform engagements, which is why a flag it raises can always be traced back to the provision behind it.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Company — team, journey, and social presence                        */
+/*                                                                     */
+/* Everything marked `todo: true` renders with a visible TO FILL chip  */
+/* so nothing placeholder can ship unnoticed. Replace the content and  */
+/* drop the flag.                                                      */
+/* ------------------------------------------------------------------ */
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  focus: string;
+  links?: { label: string; href: string }[];
+  todo?: boolean;
+};
+
+export const team: TeamMember[] = [
+  {
+    name: "TODO — founder name",
+    role: "Founder · ML & Automation",
+    bio: "TODO — two or three sentences: what you built before this, the technical ground you stand on, and why import/export compliance is a problem you are credible to solve. Investors read this before they read the product.",
+    focus: "Why this problem, why now, why you",
+    todo: true,
+  },
+  {
+    name: "TODO — team member",
+    role: "TODO — role",
+    bio: "TODO — remove this entry entirely if the company is a solo founder today. An honest team of one reads better than a padded team page.",
+    focus: "TODO",
+    todo: true,
+  },
+];
+
+export type JourneyEntry = {
+  period: string;
+  title: string;
+  body: string;
+  todo?: boolean;
+};
+
+export const journey: JourneyEntry[] = [
+  {
+    period: "TODO — date",
+    title: "The field research",
+    body: "TODO — when you started interviewing customs house agents and importers, how many, and the one finding that changed what you were going to build.",
+    todo: true,
+  },
+  {
+    period: "TODO — date",
+    title: "Aeronive Labs founded",
+    body: "TODO — incorporation, where you are based, what you set out to build.",
+    todo: true,
+  },
+  {
+    period: "TODO — date",
+    title: "The platform core",
+    body: "TODO — when the governed core came together: grounded retrieval, compiled policy, evidence generated by the running system.",
+    todo: true,
+  },
+  {
+    period: "TODO — date",
+    title: "Aeronive EXIM in production",
+    body: "TODO — when EXIM went live and what it handles today. This is the strongest fact on the page; give it a date.",
+    todo: true,
+  },
+];
+
+export type Social = {
+  label: string;
+  handle: string;
+  /** Empty string renders a visible TO FILL chip rather than a dead link. */
+  href: string;
+};
+
+/** TODO(aeronive): fill in the real handles and URLs. */
+export const socials: Social[] = [
+  { label: "LinkedIn", handle: "TODO — company page", href: "" },
+  { label: "X", handle: "TODO — @handle", href: "" },
+  { label: "GitHub", handle: "TODO — org", href: "" },
 ];

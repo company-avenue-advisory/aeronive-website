@@ -14,9 +14,9 @@ import {
 import { topologies } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Solutions",
+  title: "Platform",
   description:
-    "Company Brain, local-first interconnects, and data-backed pipelines — compliance-native AI systems deployed on-premise, in a private VPC, or fully air-gapped.",
+    "The governed core underneath Aeronive EXIM — Company Brain, local-first interconnects, and data-backed pipelines, deployed on-premise, in a private VPC, or fully air-gapped.",
 };
 
 const blocks = [
@@ -119,7 +119,7 @@ export default function SolutionsPage() {
       <PageHero
         eyebrow="Platform"
         title="One system, assembled from four disciplines."
-        lead="We do not sell a product with a compliance module bolted on. We build the retrieval, interconnect, data, and governance layers as one system, shaped by the regime you operate under."
+        lead="This is the governed core underneath Aeronive EXIM, and underneath everything we build next. We do not sell a product with a compliance module bolted on — retrieval, interconnect, data, and governance are built as one system, shaped by the regime you operate under."
       />
 
       {/* ================= Deep-dive blocks ================= */}

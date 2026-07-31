@@ -31,10 +31,11 @@ export default function Hero() {
           <Reveal y={12}>
             <div className="flex items-center gap-3">
               <span className="hidden h-px w-8 bg-gradient-to-r from-transparent to-line-strong sm:block" />
-              <span className="eyebrow">
+              <Link href="/products#exim" className="eyebrow group">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand pulse-dot" />
-                Compliance-native AI infrastructure
-              </span>
+                In production — Aeronive EXIM
+                <ArrowRight className="h-3 w-3 text-brand transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
               <span className="hidden h-px w-8 bg-gradient-to-l from-transparent to-line-strong sm:block" />
             </div>
           </Reveal>
@@ -49,20 +50,22 @@ export default function Hero() {
 
           <Reveal delay={0.16}>
             <p className="mt-7 max-w-[62ch] text-[15px] leading-relaxed text-body sm:text-[16.5px]">
-              Aeronive Labs builds compliance-native AI for regulated sectors —
-              private Company Brains, local-first interconnects, and data-backed
-              pipelines that run inside your perimeter and hold up under audit.
+              Aeronive Labs builds compliance-native AI for regulated work —
+              systems that run inside your perimeter and can show the rule
+              behind every answer. Our first product,{" "}
+              <span className="text-ink">Aeronive EXIM</span>, is in production
+              for import and export compliance.
             </p>
           </Reveal>
 
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-              <Link href="/contact" className="btn btn-primary w-full sm:w-auto">
-                Book a technical briefing
+              <Link href="/products" className="btn btn-primary w-full sm:w-auto">
+                See what&rsquo;s in production
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/solutions" className="btn btn-ghost w-full sm:w-auto">
-                Explore the platform
+              <Link href="/contact" className="btn btn-ghost w-full sm:w-auto">
+                Book a technical briefing
               </Link>
             </div>
           </Reveal>

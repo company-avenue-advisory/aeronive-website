@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Check } from "@/components/ui/Icons";
-import { sectors, site } from "@/lib/site";
+import { products, sectors, site } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "unconfigured" | "error";
 
@@ -11,6 +11,13 @@ const deployments = [
   "On-premise",
   "Air-gapped",
   "Not decided yet",
+];
+
+/** Shipped products first, then the platform and the open-ended option. */
+const interests = [
+  ...products.map((p) => `${p.name} — ${p.category}`),
+  "The platform (custom build)",
+  "Something else",
 ];
 
 const fieldClass =
@@ -51,7 +58,7 @@ export default function ContactForm() {
 
       // No delivery endpoint configured — hand the user a working mailto
       setDraft(
-        `Name: ${payload.name ?? ""}\nOrganization: ${payload.organization ?? ""}\nSector: ${payload.sector ?? ""}\nDeployment: ${payload.deployment ?? ""}\n\n${payload.message ?? ""}`,
+        `Name: ${payload.name ?? ""}\nOrganization: ${payload.organization ?? ""}\nInterest: ${payload.interest ?? ""}\nSector: ${payload.sector ?? ""}\nDeployment: ${payload.deployment ?? ""}\n\n${payload.message ?? ""}`,
       );
       setStatus(json.error === "unconfigured" ? "unconfigured" : "error");
     } catch {
@@ -140,6 +147,9 @@ export default function ContactForm() {
             <option value="" disabled>
               Select a sector
             </option>
+            <option value="Trade & logistics" className="bg-raised">
+              Trade &amp; logistics (import/export)
+            </option>
             {sectors.map((s) => (
               <option key={s.slug} value={s.name} className="bg-raised">
                 {s.name}
@@ -150,6 +160,27 @@ export default function ContactForm() {
             </option>
           </select>
         </Field>
+
+        <div className="sm:col-span-2">
+          <Field label="What are you interested in?">
+            <div className="flex flex-wrap gap-2">
+              {interests.map((interest, i) => (
+                <label key={interest} className="cursor-pointer">
+                  <input
+                    type="radio"
+                    name="interest"
+                    value={interest}
+                    defaultChecked={i === 0}
+                    className="peer sr-only"
+                  />
+                  <span className="block rounded-full border border-line-strong bg-veil px-4 py-2 text-[12.5px] text-muted transition-all duration-300 peer-checked:border-brand/45 peer-checked:bg-brand/12 peer-checked:text-brand-text hover:border-line-strong">
+                    {interest}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </Field>
+        </div>
 
         <div className="sm:col-span-2">
           <Field label="Preferred deployment">
