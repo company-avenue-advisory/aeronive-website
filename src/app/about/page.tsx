@@ -3,7 +3,7 @@ import PageHero from "@/components/sections/PageHero";
 import CTA from "@/components/sections/CTA";
 import Reveal from "@/components/ui/Reveal";
 import { Container, SectionHeading } from "@/components/ui/Section";
-import { ArrowRight } from "@/components/ui/Icons";
+import { ArrowRight, brandIcons } from "@/components/ui/Icons";
 import { evidence, journey, site, socials, team } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ function TodoChip() {
   );
 }
 
-const thesis = [
+const thesis: { title: string; body: string; todo?: boolean }[] = [
   {
     title: "Why this problem",
     body: "Compliance work in trade is knowledge work done under time pressure with a penalty attached. The expertise that prevents a query sits in a small number of experienced heads, and it does not scale, transfer, or get checked. That is a problem worth solving with software that can show its reasoning.",
@@ -32,8 +32,7 @@ const thesis = [
   },
   {
     title: "Why us",
-    body: "TODO — the founder-market-fit paragraph. What you did before, what you know that a generalist team does not, and what the field research gave you that a competitor reading the same market report does not have.",
-    todo: true,
+    body: "Our team has been working on state-of-the-art process and system design for compliance AI. We have expert and board advisors out of this industry who act as a vector into the system — the working knowledge of how the process actually runs, shaping what gets built rather than reviewing it afterwards. That is what we are building towards.",
   },
 ];
 
@@ -76,7 +75,7 @@ export default function AboutPage() {
             lead="Investors and accelerators read the team before the product. This is deliberately short and deliberately specific."
           />
 
-          <div className="mt-14 grid gap-4 md:grid-cols-2">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((member, i) => (
               <Reveal key={member.name} delay={i * 0.08}>
                 <article className="card flex h-full flex-col p-7">
@@ -96,24 +95,28 @@ export default function AboutPage() {
                     {member.bio}
                   </p>
 
-                  <div className="mt-7 border-t border-line pt-5">
+                  <div className="mt-7 flex items-center justify-between gap-4 border-t border-line pt-5">
                     <span className="font-mono text-[10px] tracking-[0.08em] text-ghost uppercase">
                       {member.focus}
                     </span>
                     {member.links && member.links.length > 0 && (
-                      <ul className="mt-3 flex flex-wrap gap-4">
-                        {member.links.map((link) => (
-                          <li key={link.href}>
-                            <a
-                              href={link.href}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-[12.5px] text-body underline decoration-line-strong underline-offset-4 transition-colors hover:text-brand-text"
-                            >
-                              {link.label}
-                            </a>
-                          </li>
-                        ))}
+                      <ul className="flex shrink-0 items-center gap-2">
+                        {member.links.map((link) => {
+                          const Icon = brandIcons[link.icon];
+                          return (
+                            <li key={link.href}>
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`${member.name} on ${link.label}`}
+                                className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-muted transition-colors duration-300 hover:border-line-strong hover:text-brand-text"
+                              >
+                                <Icon className="h-[15px] w-[15px]" />
+                              </a>
+                            </li>
+                          );
+                        })}
                       </ul>
                     )}
                   </div>
@@ -215,12 +218,15 @@ export default function AboutPage() {
               <div className="card flex h-full flex-col p-7">
                 <span className="label-mono">Follow the work</span>
                 <ul className="mt-6 flex flex-col">
-                  {socials.map((social) => (
+                  {socials.map((social) => {
+                    const Icon = brandIcons[social.icon];
+                    return (
                     <li
                       key={social.label}
                       className="flex items-center justify-between gap-4 border-b border-line py-4 first:border-t first:border-line"
                     >
-                      <span className="text-[14px] text-ink">
+                      <span className="flex items-center gap-3 text-[14px] text-ink">
+                        <Icon className="h-4 w-4 text-muted" />
                         {social.label}
                       </span>
                       {social.href ? (
@@ -242,7 +248,8 @@ export default function AboutPage() {
                         </span>
                       )}
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </div>
             </Reveal>

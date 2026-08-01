@@ -91,7 +91,7 @@ export async function POST(request: Request) {
 
   const submission = {
     ...data,
-    source: "aeronivelabs.com/contact",
+    source: "aeronive.com/contact",
     createdAt: new Date(),
     userAgent: request.headers.get("user-agent")?.slice(0, 300) ?? null,
   };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Section";
 import { Wordmark } from "@/components/ui/Brand";
+import { brandIcons } from "@/components/ui/Icons";
 import { frameworks, products, site, socials } from "@/lib/site";
 
 const columns = [
@@ -68,21 +69,25 @@ export default function Footer() {
             </a>
 
             {socials.some((s) => s.href) && (
-              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="mt-7 flex flex-wrap items-center gap-3">
                 {socials
                   .filter((s) => s.href)
-                  .map((s) => (
-                    <li key={s.label}>
-                      <a
-                        href={s.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-[11.5px] tracking-[0.06em] text-ghost transition-colors hover:text-ink"
-                      >
-                        {s.label}
-                      </a>
-                    </li>
-                  ))}
+                  .map((s) => {
+                    const Icon = brandIcons[s.icon];
+                    return (
+                      <li key={s.label}>
+                        <a
+                          href={s.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${site.name} on ${s.label}`}
+                          className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted transition-colors duration-300 hover:border-line-strong hover:text-ink"
+                        >
+                          <Icon className="h-4 w-4" />
+                        </a>
+                      </li>
+                    );
+                  })}
               </ul>
             )}
           </div>
