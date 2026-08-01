@@ -442,9 +442,9 @@ export const team: TeamMember[] = [
   },
   {
     name: "Anshika Singh",
-    role: "Business Operations & Technology Manager",
-    bio: "TODO — two or three sentences on the operating side: what you run day to day, what you did before this, and the ground you stand on with customers and partners.",
-    focus: "Operations, partnerships, delivery",
+    role: "Co-Founder & COO",
+    bio: "As Co-founder & COO of Aeronive Labs, I lead operations, IT, and compliance, building the infrastructure and systems that let our AI products scale securely and reliably. My focus is turning ambitious technology into an enterprise-ready, compliant business, owning everything from IT infrastructure and security to operational execution and regulatory strategy.",
+    focus: "Operations, IT, and compliance",
     links: [
       {
         label: "LinkedIn",
@@ -452,7 +452,6 @@ export const team: TeamMember[] = [
         icon: "linkedin",
       },
     ],
-    todo: true,
   },
   {
     name: "Aryan Srivastava",
