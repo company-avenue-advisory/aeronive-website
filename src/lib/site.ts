@@ -428,8 +428,8 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Yug Shrivastav",
-    role: "Chief AI Architect & Co-Founder",
-    bio: "At Aeronive Labs, I bridge product strategy and engineering as Co-founder and Chief AI Architect to build a global trade compliance engine. Previously, I developed core algorithms for automated HSN classification, a blockchain-based supply chain platform, and a multi-agent AI orchestrator for the RBI. That experience now drives our mission to eliminate compliance bottlenecks through autonomous AI systems.",
+    role: "Co-Founder & CTO",
+    bio: "At Aeronive Labs, I bridge product strategy and engineering as Co-Founder and CTO to build a global trade compliance engine. Previously, I developed core algorithms for automated HSN classification, a blockchain-based supply chain platform, and a multi-agent AI orchestrator for the RBI. That experience now drives our mission to eliminate compliance bottlenecks through autonomous AI systems.",
     focus: "Product strategy, AI architecture",
     links: [
       {
