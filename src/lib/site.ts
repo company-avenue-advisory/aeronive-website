@@ -453,24 +453,6 @@ export const team: TeamMember[] = [
       },
     ],
   },
-  {
-    name: "Aryan Srivastava",
-    role: "AI & Full Stack Developer",
-    bio: "As AI and Full Stack developer at Aeronive Labs, I build AI-first products that combine agentic automation with modern software engineering. My expertise spans multi-agent systems, generative AI, workflow automation, API integrations, and full-stack development to create scalable solutions for startups and enterprises.",
-    focus: "Agentic systems, product engineering",
-    links: [
-      {
-        label: "LinkedIn",
-        href: "https://www.linkedin.com/in/aryansrivastava24/",
-        icon: "linkedin",
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/Aryan246cs",
-        icon: "github",
-      },
-    ],
-  },
 ];
 
 export type JourneyEntry = {
