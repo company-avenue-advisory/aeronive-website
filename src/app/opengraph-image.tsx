@@ -7,7 +7,7 @@ import { ImageResponse } from "next/og";
  */
 
 export const alt =
-  "Aeronive Labs — compliance-native AI. Aeronive EXIM is in production for import and export compliance.";
+  "Aeronive Labs — AI-native compliance solutions for regulated industries.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -69,8 +69,8 @@ export default function OpengraphImage() {
               maxWidth: 880,
             }}
           >
-            Aeronive EXIM is in production for import and export compliance —
-            every flag traced to the provision behind it.
+            AI-native compliance for regulated industries — every answer
+            traced to the rule behind it.
           </div>
         </div>
 

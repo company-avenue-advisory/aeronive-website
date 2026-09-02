@@ -6,12 +6,12 @@ import Reveal from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Section";
 import { ArrowRight } from "@/components/ui/Icons";
 import { formatResearchDate, publishedResearch } from "@/lib/research";
-import { site, traction } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Field notes and papers from Aeronive Labs — what we are learning from customs house agents, importers, and exporters, and how we evaluate the systems we build.",
+    "Field notes and papers from Aeronive Labs — what we are learning from compliance practitioners in regulated industries, and how we evaluate the systems we build.",
 };
 
 export default function ResearchPage() {
@@ -43,12 +43,11 @@ export default function ResearchPage() {
                     The first field notes are being written up now.
                   </h2>
                   <p className="mx-auto mt-5 max-w-[56ch] text-[13.5px] leading-[1.8] text-muted">
-                    They come out of recorded conversations with customs house
-                    agents, importers, and exporters moving cargo through{" "}
-                    {traction.corridors.join(", ")} — the same conversations
-                    that decided what Aeronive EXIM checks for. We would rather
-                    leave this page empty than fill it with writing we have not
-                    done.
+                    They come out of recorded conversations with compliance,
+                    risk, and audit practitioners in regulated industries — the
+                    same conversations that scoped what we build. We would
+                    rather leave this page empty than fill it with writing we
+                    have not done.
                   </p>
                   <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
                     <a
@@ -59,10 +58,10 @@ export default function ResearchPage() {
                       <ArrowRight className="h-4 w-4" />
                     </a>
                     <Link
-                      href="/products"
+                      href="/solutions"
                       className="btn btn-ghost w-full sm:w-auto"
                     >
-                      See what we shipped instead
+                      See how the platform works
                     </Link>
                   </div>
                 </div>
@@ -128,9 +127,9 @@ export default function ResearchPage() {
 
       <CTA
         title="Working on the same problem?"
-        lead="If you clear cargo, file entries, or run compliance for an importer or exporter, we want to hear where the process actually breaks. Those conversations are what this page is made of."
+        lead="If you run compliance, risk, or audit inside a regulated organisation, we want to hear where the process actually breaks. Those conversations are what this page is made of."
         primary={{ label: "Tell us what breaks", href: "/contact" }}
-        secondary={{ label: "See Aeronive EXIM", href: "/products#exim" }}
+        secondary={{ label: "See how the platform works", href: "/solutions" }}
       />
     </>
   );

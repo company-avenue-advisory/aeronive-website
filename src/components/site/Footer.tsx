@@ -2,19 +2,16 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Section";
 import { Wordmark } from "@/components/ui/Brand";
 import { brandIcons } from "@/components/ui/Icons";
-import { frameworks, products, site, socials } from "@/lib/site";
+import { frameworks, site, socials } from "@/lib/site";
 
 const columns = [
   {
-    title: "Products",
+    title: "Solutions",
     links: [
-      ...products.map((p) => ({
-        label: p.name,
-        href: `/products#${p.slug}`,
-      })),
-      { label: "All products", href: "/products" },
+      { label: "Platform overview", href: "/solutions" },
       { label: "Sectors", href: "/sectors" },
       { label: "Compliance posture", href: "/sectors#frameworks" },
+      { label: "Engagement model", href: "/#process" },
     ],
   },
   {
@@ -32,7 +29,6 @@ const columns = [
       { label: "About", href: "/about" },
       { label: "Team", href: "/about#team" },
       { label: "Research", href: "/research" },
-      { label: "Engagement model", href: "/#process" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -57,9 +53,9 @@ export default function Footer() {
               <Wordmark className="h-11 w-auto" />
             </Link>
             <p className="mt-5 max-w-xs text-[13.5px] leading-relaxed text-muted">
-              Compliance-native AI systems for regulated work. Aeronive EXIM is
-              in production for import and export compliance; the platform
-              underneath it is what the next products are built from.
+              AI-native compliance solutions for regulated industries — systems
+              that run inside your perimeter and show the rule behind every
+              answer.
             </p>
             <a
               href={`mailto:${site.email}`}

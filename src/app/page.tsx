@@ -4,7 +4,7 @@ import CTA from "@/components/sections/CTA";
 import FrameworkMarquee from "@/components/site/FrameworkMarquee";
 import Reveal from "@/components/ui/Reveal";
 import { Container, SectionHeading } from "@/components/ui/Section";
-import { ArrowRight, Check } from "@/components/ui/Icons";
+import { ArrowRight } from "@/components/ui/Icons";
 import {
   AssuranceVisual,
   CompanyBrainVisual,
@@ -19,8 +19,6 @@ import {
   metrics,
   metricsNote,
   process,
-  products,
-  roadmapNote,
   sectors,
 } from "@/lib/site";
 
@@ -64,89 +62,11 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ================= Products ================= */}
-      <section id="products" className="relative py-24 sm:py-32">
-        <Container>
-          <SectionHeading
-            eyebrow="Shipping today"
-            title={
-              <>
-                One product in production.
-                <br />
-                Not a roadmap.
-              </>
-            }
-            lead="The honest answer to “what do you sell, and to whom?” — a compliance system doing real work on real consignments, built on the platform below it."
-          />
-
-          <div className="mt-16 flex flex-col gap-4">
-            {products.map((product) => (
-              <Reveal key={product.slug}>
-                <Link
-                  href={`/products#${product.slug}`}
-                  className="card card-hover group grid gap-10 p-7 sm:p-9 lg:grid-cols-[1.1fr_0.9fr]"
-                >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="inline-flex items-center gap-2 rounded-full border border-ok/25 bg-ok/10 px-3 py-1.5 font-mono text-[10px] tracking-[0.1em] text-ok uppercase">
-                        <span className="h-1.5 w-1.5 rounded-full bg-ok pulse-dot" />
-                        {product.status}
-                      </span>
-                      <span className="font-mono text-[10.5px] tracking-[0.1em] text-ghost uppercase">
-                        {product.category}
-                      </span>
-                    </div>
-
-                    <h3 className="mt-6 flex items-center gap-3 text-[26px] font-medium tracking-[-0.02em] text-ink">
-                      {product.name}
-                      <ArrowRight className="h-4 w-4 shrink-0 text-ghost transition-all duration-400 group-hover:translate-x-0.5 group-hover:text-brand" />
-                    </h3>
-                    <p className="mt-4 max-w-[52ch] text-[14px] leading-[1.75] text-body">
-                      {product.summary}
-                    </p>
-                    <p className="mt-5 text-[12.5px] leading-relaxed text-faint">
-                      For {product.who.toLowerCase()}.
-                    </p>
-                  </div>
-
-                  <div className="border-t border-line pt-7 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-                    <span className="label-mono">What it checks</span>
-                    <ul className="mt-5 flex flex-col gap-3">
-                      {product.points.slice(0, 4).map((point) => (
-                        <li key={point} className="flex items-start gap-3">
-                          <Check className="mt-[3px] h-3.5 w-3.5 shrink-0 text-brand" />
-                          <span className="text-[13px] leading-relaxed text-muted">
-                            {point}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-
-            <Reveal delay={0.08}>
-              <div className="flex flex-col items-start justify-between gap-5 rounded-[18px] border border-dashed border-line-strong px-7 py-6 sm:flex-row sm:items-center">
-                <p className="max-w-[62ch] text-[13px] leading-relaxed text-muted">
-                  <span className="text-ink">{roadmapNote.title}</span> Further
-                  products are in development against the same governed core.
-                </p>
-                <Link href="/products" className="btn btn-ghost group shrink-0">
-                  All products
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
       {/* ================= Capabilities bento ================= */}
       <section id="capabilities" className="relative py-24 sm:py-32">
         <Container>
           <SectionHeading
-            eyebrow="The platform underneath"
+            eyebrow="The platform"
             title={
               <>
                 Less pilot theatre.
@@ -154,7 +74,7 @@ export default function Home() {
                 Systems that survive contact.
               </>
             }
-            lead="Six building blocks that EXIM is assembled from, and that every product after it will use — composed against your data estate, your regulator, and your network reality, not a reference architecture."
+            lead="Six building blocks the platform is assembled from — composed against your data estate, your regulator, and your network reality, not a reference architecture."
           />
 
           <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-12">
@@ -284,7 +204,7 @@ export default function Home() {
             <div className="max-w-2xl">
               <SectionHeading
                 align="left"
-                eyebrow="Where this goes next"
+                eyebrow="Where this goes"
                 title={
                   <>
                     Regulated sectors,
@@ -292,7 +212,7 @@ export default function Home() {
                     on their own terms.
                   </>
                 }
-                lead="Trade compliance is where the platform went to work first. These are the sectors it is architected for next — each one carries its own regime, its own evidentiary standard, and its own definition of an unacceptable failure. Listed as direction, not as a client list."
+                lead="These are the sectors the platform is architected for — each one carries its own regime, its own evidentiary standard, and its own definition of an unacceptable failure. Listed as direction, not as a client list."
               />
             </div>
             <Reveal delay={0.1}>
@@ -380,10 +300,10 @@ export default function Home() {
 
       {/* ================= CTA ================= */}
       <CTA
-        title="Start with the product that already runs."
-        lead="If you move cargo, the fastest conversation is about EXIM and a real consignment. If you are here for the platform, a technical briefing covers your data estate, the regimes that apply, and what a first use case would take. No slideware."
+        title="Bring frontier capability inside the perimeter."
+        lead="A technical briefing covers your data estate, the regimes that apply, and what a first production use case would actually take. No slideware."
         primary={{ label: "Book a technical briefing", href: "/contact" }}
-        secondary={{ label: "See Aeronive EXIM", href: "/products#exim" }}
+        secondary={{ label: "See how the platform works", href: "/solutions" }}
       />
     </>
   );
