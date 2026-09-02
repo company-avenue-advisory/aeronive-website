@@ -9,7 +9,7 @@ import { evidence, journey, site, socials, team } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Who is building Aeronive Labs, how we got to trade and customs compliance, and where the company actually stands today.",
+    "Who is building Aeronive Labs, how the company came together, and where it actually stands today.",
 };
 
 /** Marks scaffold content that must be replaced before launch. */
@@ -24,7 +24,7 @@ function TodoChip() {
 const thesis: { title: string; body: string; todo?: boolean }[] = [
   {
     title: "Why this problem",
-    body: "Compliance work in trade is knowledge work done under time pressure with a penalty attached. The expertise that prevents a query sits in a small number of experienced heads, and it does not scale, transfer, or get checked. That is a problem worth solving with software that can show its reasoning.",
+    body: "Compliance work in regulated industries is knowledge work done under time pressure with a penalty attached. The expertise that prevents a finding sits in a small number of experienced heads, and it does not scale, transfer, or get checked. That is a problem worth solving with software that can show its reasoning.",
   },
   {
     title: "Why now",
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A company built backwards from the interviews."
-        lead="We did not pick a market and look for a problem. We went and asked the people who clear cargo what actually goes wrong, and built the first product against the answer. This page is who we are, how we got here, and what is still unproven."
+        lead="We did not pick a market and look for a problem. We went and asked the people who do compliance work in regulated industries what actually goes wrong, and scoped what we build against the answer. This page is who we are, how we got here, and what is still unproven."
       />
 
       {/* ================= Thesis ================= */}
@@ -277,9 +277,9 @@ export default function AboutPage() {
 
       <CTA
         title="Ask us the hard question."
-        lead="The one we get asked most is what happens when the system is wrong about a classification. We have an answer, and it is architectural rather than reassuring."
+        lead="The one we get asked most is what happens when the system is wrong. We have an answer, and it is architectural rather than reassuring."
         primary={{ label: "Get in touch", href: "/contact" }}
-        secondary={{ label: "See what we shipped", href: "/products" }}
+        secondary={{ label: "See how the platform works", href: "/solutions" }}
       />
     </>
   );

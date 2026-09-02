@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Check } from "@/components/ui/Icons";
-import { products, sectors, site } from "@/lib/site";
+import { sectors, site } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "unconfigured" | "error";
 
@@ -13,10 +13,9 @@ const deployments = [
   "Not decided yet",
 ];
 
-/** Shipped products first, then the platform and the open-ended option. */
 const interests = [
-  ...products.map((p) => `${p.name} — ${p.category}`),
-  "The platform (custom build)",
+  "A platform deployment (custom build)",
+  "A scoped assessment first",
   "Something else",
 ];
 
@@ -146,9 +145,6 @@ export default function ContactForm() {
           >
             <option value="" disabled>
               Select a sector
-            </option>
-            <option value="Trade & logistics" className="bg-raised">
-              Trade &amp; logistics (import/export)
             </option>
             {sectors.map((s) => (
               <option key={s.slug} value={s.name} className="bg-raised">

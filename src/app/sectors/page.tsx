@@ -9,7 +9,7 @@ import { sectors } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Sectors",
   description:
-    "Trade and customs compliance is where the Aeronive platform went to work first. These are the regulated sectors it is architected for next, mapped to the regimes that govern each.",
+    "The regulated sectors the Aeronive platform is architected for, mapped to the regimes that govern each.",
 };
 
 const frameworkDetail = [
@@ -70,7 +70,7 @@ export default function SectorsPage() {
       <PageHero
         eyebrow="Sectors"
         title="Compliance is not a horizontal layer."
-        lead="Each regulated sector carries its own regime, its own evidentiary standard, and its own definition of an unacceptable failure — which is why we shipped into one before claiming the rest. Trade and customs is where Aeronive EXIM runs today. The sectors below are direction, not a client list."
+        lead="Each regulated sector carries its own regime, its own evidentiary standard, and its own definition of an unacceptable failure. The sectors below are the ones the platform is built for — direction, not a client list."
       />
 
       {/* ================= Sector detail ================= */}

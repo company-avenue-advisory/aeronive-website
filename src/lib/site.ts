@@ -7,15 +7,14 @@ import type { BrandIconName } from "@/components/ui/Icons";
 
 export const site = {
   name: "Aeronive Labs",
-  tagline: "Compliance-native AI for frontier systems",
+  tagline: "AI-native compliance for regulated industries",
   description:
-    "Aeronive Labs builds compliance-native AI systems for regulated sectors. Our first product, Aeronive EXIM, is in production for import and export compliance; the platform underneath it — Company Brain, local-first interconnect, governed pipelines — is what the next ones are built from.",
+    "Aeronive Labs builds AI-native compliance solutions for regulated industries — systems that run inside your perimeter and can show the rule behind every answer. Company Brain, local-first interconnect, and governed pipelines, deployed on-premise, in a private VPC, or fully air-gapped.",
   email: "info@aeronive.com",
   url: "https://aeronive.com",
 };
 
 export const nav = [
-  { label: "Products", href: "/products" },
   { label: "Platform", href: "/solutions" },
   { label: "Sectors", href: "/sectors" },
   { label: "Research", href: "/research" },
@@ -61,83 +60,29 @@ export const chips = [
 
 export const traction = {
   /**
-   * TODO(aeronive): set the real count of customs house agent / importer
-   * interviews. Left null deliberately — the copy reads correctly without a
-   * number, and a wrong number is worse than none.
+   * TODO(aeronive): set the real count of practitioner interviews. Left null
+   * deliberately — the copy reads correctly without a number, and a wrong
+   * number is worse than none.
    */
   interviewCount: null as number | null,
-  /** TODO(aeronive): the ports and ICDs those conversations actually covered. */
-  corridors: ["Nhava Sheva", "Mundra", "ICD Tughlakabad"],
 };
 
 export const evidence = [
   {
     label: "Field research",
     body: traction.interviewCount
-      ? `${traction.interviewCount} recorded conversations with customs house agents, importers, and exporters moving cargo through ${traction.corridors.join(", ")}.`
-      : `Recorded conversations with customs house agents, importers, and exporters moving cargo through ${traction.corridors.join(", ")}. The product scope came out of those, not out of a market map.`,
+      ? `${traction.interviewCount} recorded conversations with compliance, risk, and audit practitioners in regulated industries.`
+      : "Recorded conversations with compliance, risk, and audit practitioners in regulated industries. What we build was scoped from those, not from a market map.",
   },
   {
-    label: "Working software",
-    body: "Aeronive EXIM is in production — a running system, not a prototype deck. The platform capabilities on this site are the parts it is assembled from.",
+    label: "The platform",
+    body: "One governed core in active development — grounded retrieval, policy compiled into runtime controls, and evidence generated as the system runs. Every deployment is assembled from it.",
   },
   {
     label: "What we have not done yet",
     body: "No published benchmark results, no named reference customers. When we have measured numbers, they go in Research with the method attached.",
   },
 ];
-
-/* ------------------------------------------------------------------ */
-/* Products — what we actually sell today, and what it sits on         */
-/*                                                                     */
-/* TODO(aeronive): the capability lists below must match what the      */
-/* shipped EXIM product actually does. Trim anything not yet true.     */
-/* ------------------------------------------------------------------ */
-
-export type Product = {
-  slug: string;
-  name: string;
-  status: "In production" | "In development";
-  category: string;
-  who: string;
-  summary: string;
-  body: string[];
-  points: string[];
-  regimes: string[];
-};
-
-export const products: Product[] = [
-  {
-    slug: "exim",
-    name: "Aeronive EXIM",
-    status: "In production",
-    category: "Trade & customs compliance",
-    who: "Customs house agents, importers, exporters, and freight forwarders",
-    summary:
-      "Compliance checks that run against the consignment before it reaches the assessing officer — classification, licensing, valuation, and document completeness, each flag traced to the rule behind it.",
-    body: [
-      "Import and export compliance fails in a small number of predictable places: a classification that does not survive scrutiny, a licence or authorisation that does not cover the item, a valuation the department reads differently, a document set that is one certificate short. The cost of finding out late is a query, a detention, demurrage, and occasionally a penalty.",
-      "The knowledge that prevents this sits with experienced people, in their heads, one consignment at a time. Aeronive EXIM makes that knowledge checkable. It reads the documents for a shipment, checks them against the applicable rules, and returns the specific problems with the specific provision each one comes from — so a filing decision can be argued, not just asserted.",
-    ],
-    points: [
-      "Classification review against the tariff, with the reasoning shown",
-      "Licence, authorisation, and restriction checks for the item and route",
-      "Document-set completeness checked against the actual consignment",
-      "Valuation and duty-exposure flags raised before filing, not after",
-      "Every flag cites the provision, notification, or circular behind it",
-    ],
-    regimes: ["Customs Act", "DGFT / FTP", "HS / ITC-HS", "GST on imports"],
-  },
-];
-
-/**
- * What comes after EXIM. Deliberately unnamed — we do not list products that
- * do not exist. TODO(aeronive): promote entries into `products` as they ship.
- */
-export const roadmapNote = {
-  title: "EXIM is the first, not the only.",
-  body: "The governed core — retrieval with citations, policy compiled into runtime controls, evidence generated by the running system — was built to carry more than one product. Trade compliance is where it went to work first because that is where we did the field research. Further products are in development against the same core.",
-};
 
 /* ------------------------------------------------------------------ */
 /* Core capabilities — bento grid on the landing page                  */
@@ -230,7 +175,7 @@ export const metrics = [
   {
     value: "1",
     unit: "core",
-    label: "One governed platform underneath every product we ship.",
+    label: "One governed platform underneath every deployment we ship.",
   },
   {
     value: "24/7",
@@ -403,8 +348,8 @@ export const faqs = [
     a: "A scoped assessment covering the data estate and regulatory surface, followed by a production pilot on one high-value use case. The mapping phase sets the timeline; we would rather scope it against your estate than quote you an average.",
   },
   {
-    q: "Is Aeronive EXIM a separate product or part of the platform?",
-    a: "Both. EXIM is a product you can buy today for import and export compliance. It is built on the same governed core — grounded retrieval, compiled policy, generated evidence — that we deploy for platform engagements, which is why a flag it raises can always be traced back to the provision behind it.",
+    q: "Is this a product or a consulting engagement?",
+    a: "An engagement that leaves you with a running system. We deploy the governed platform — grounded retrieval, compiled policy, continuous assurance — against your data estate and your regulatory surface, then hand over the runbooks so your team can operate it without us.",
   },
 ];
 
@@ -429,7 +374,7 @@ export const team: TeamMember[] = [
   {
     name: "Yug Shrivastav",
     role: "Co-Founder & CTO",
-    bio: "At Aeronive Labs, I bridge product strategy and engineering as Co-Founder and CTO to build a global trade compliance engine. Previously, I developed core algorithms for automated HSN classification, a blockchain-based supply chain platform, and a multi-agent AI orchestrator for the RBI. That experience now drives our mission to eliminate compliance bottlenecks through autonomous AI systems.",
+    bio: "At Aeronive Labs, I bridge product strategy and engineering as Co-Founder and CTO to build AI-native compliance systems for regulated industries. Previously, I developed core algorithms for automated classification pipelines, a blockchain-based supply chain platform, and a multi-agent AI orchestrator for the RBI. That experience now drives our mission to eliminate compliance bottlenecks through autonomous AI systems.",
     focus: "Product strategy, AI architecture",
     links: [
       {
@@ -453,24 +398,6 @@ export const team: TeamMember[] = [
       },
     ],
   },
-  {
-    name: "Aryan Srivastava",
-    role: "AI & Full Stack Developer",
-    bio: "As AI and Full Stack developer at Aeronive Labs, I build AI-first products that combine agentic automation with modern software engineering. My expertise spans multi-agent systems, generative AI, workflow automation, API integrations, and full-stack development to create scalable solutions for startups and enterprises.",
-    focus: "Agentic systems, product engineering",
-    links: [
-      {
-        label: "LinkedIn",
-        href: "https://www.linkedin.com/in/aryansrivastava24/",
-        icon: "linkedin",
-      },
-      {
-        label: "GitHub",
-        href: "https://github.com/Aryan246cs",
-        icon: "github",
-      },
-    ],
-  },
 ];
 
 export type JourneyEntry = {
@@ -484,7 +411,7 @@ export const journey: JourneyEntry[] = [
   {
     period: "June 2026",
     title: "The field research",
-    body: "We began by sitting with customs house agents, importers, and exporters and asking what actually goes wrong between a consignment arriving and a filing being accepted. What we build was scoped from those conversations rather than from a market map.",
+    body: "We began by sitting with compliance, risk, and audit teams in regulated industries and asking what actually goes wrong between a question being asked and an answer that holds up under scrutiny. What we build was scoped from those conversations rather than from a market map.",
   },
   {
     period: "24 July 2026",
@@ -494,12 +421,12 @@ export const journey: JourneyEntry[] = [
   {
     period: "In buildup",
     title: "The platform core",
-    body: "The governed core is coming together as one system: retrieval that resolves every answer to a cited source, policy compiled into runtime controls, and audit evidence generated by the system as it runs. Every product we ship sits on it.",
+    body: "The governed core is coming together as one system: retrieval that resolves every answer to a cited source, policy compiled into runtime controls, and audit evidence generated by the system as it runs. Every deployment sits on it.",
   },
   {
-    period: "In production",
-    title: "Aeronive EXIM in production",
-    body: "EXIM checks a consignment before it reaches the assessing officer — classification against the tariff, licensing and restrictions for the item and route, valuation exposure, and document-set completeness. Every flag it raises cites the provision behind it.",
+    period: "Next",
+    title: "First production deployments",
+    body: "The governed core was built to carry more than one use case. First engagements are being scoped now against the regulated sectors the platform is architected for, each one against a single high-value use case.",
   },
 ];
 

@@ -37,14 +37,14 @@ export type ResearchEntry = {
 
 export const research: ResearchEntry[] = [
   {
-    slug: "what-customs-agents-actually-do",
+    slug: "what-compliance-teams-actually-do",
     kind: "note",
-    title: "What customs house agents actually do all day",
+    title: "What compliance teams in regulated industries actually do all day",
     summary:
-      "Field notes from conversations with CHAs, importers, and exporters — where compliance work really goes wrong, and why it is a knowledge problem before it is a software problem.",
+      "Field notes from conversations with compliance, risk, and audit practitioners — where the work really goes wrong, and why it is a knowledge problem before it is a software problem.",
     date: "2026-07-30",
     authors: ["Aeronive Labs"],
-    tags: ["Field research", "Trade compliance"],
+    tags: ["Field research", "Regulated industries"],
     published: false, // TODO(aeronive): publish once the write-up below is real.
     body: [
       {
@@ -54,7 +54,7 @@ export const research: ResearchEntry[] = [
       { type: "h", text: "How the conversations happened" },
       {
         type: "p",
-        text: "TODO — how many people, over what period, in which corridors, and how you got to them. Specificity is the whole point: 'twenty CHAs across Nhava Sheva and ICD Tughlakabad over six weeks' carries weight that 'extensive market research' never will.",
+        text: "TODO — how many people, over what period, in which sectors, and how you got to them. Specificity is the whole point: 'twenty compliance leads across financial services and healthcare over six weeks' carries weight that 'extensive market research' never will.",
       },
       { type: "h", text: "What we expected to find" },
       {
@@ -87,7 +87,7 @@ export const research: ResearchEntry[] = [
     kind: "paper",
     title: "Grounding compliance answers in the provision that produced them",
     summary:
-      "A write-up of the retrieval and citation design behind Aeronive EXIM, and how we evaluate whether a cited answer is actually supported by what it cites.",
+      "A write-up of the retrieval and citation design behind the Aeronive platform, and how we evaluate whether a cited answer is actually supported by what it cites.",
     date: "2026-07-15",
     authors: ["Aeronive Labs"],
     tags: ["Retrieval", "Evaluation", "Method"],
